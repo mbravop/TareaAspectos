@@ -2,7 +2,7 @@ import java.util.Hashtable;
 
 public aspect SingletonRegister{
 	/**
-	 * especificar la clase que implementa la interfaz Singleton mediante una declaración de parentesco 
+	 * especificar la clase que implementa la interfaz Singleton mediante una declaracion de parentesco 
 	 */
 	declare parents: ServiciosExt implements Singleton;
 
@@ -17,13 +17,13 @@ public aspect SingletonRegister{
 	interface Singleton {}
 
 	/**
-	 * Define excepciones a la protección del constructor, permitiendo que
+	 * Define excepciones a la proteccion del constructor, permitiendo que
 	 * determinadas clases puedan acceder al constructor original
 	 */
 	protected pointcut protectionExclusions();
 
 	/**
-	 * Remplaza las llamadas al constructor de una clase Singleton para crear una única instancia bajo demanda.
+	 * Remplaza las llamadas al constructor de una clase Singleton para crear una unica instancia bajo demanda.
 	 */
 	 Object around(): call((Singleton+).new(..))&& !protectionExclusions() {
 		 Class singleton=thisJoinPoint.getSignature().getDeclaringType();
